@@ -1,0 +1,1186 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/kuka/youbot/protos/Youbot.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Parquetry.proto"
+
+WorldInfo {
+  title "Autonomous Trash Collector"
+  basicTimeStep 16
+  contactProperties [
+    ContactProperties {
+      material2 "trash"
+      coulombFriction [
+        4
+      ]
+      bounce 0
+      maxContactJoints 8
+    }
+  ]
+}
+Viewpoint {
+  orientation -0.13446620138565105 -0.07885041996845611 0.9877760130493712 4.099829015356582
+  position 3.3120539883910354 5.171886200623932 2.0317084278950026
+  follow "trash collector"
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 8 8
+  tileSize 16 16
+  appearance Parquetry {
+    type "light strip"
+    colorOverride 0.78 0.68 0.5
+  }
+}
+Solid {
+  translation -1.91 -0.99 0.38
+  children [
+    Pose {
+      translation 0 0 -0.18
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.12 0.12 0.12
+            roughness 0.8
+            metalness 0
+          }
+          geometry Box {
+            size 0.035 0.035 0.72
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.22
+      rotation 0 0 1 0.785398
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.06 0.55 0.95
+            roughness 0.75
+            metalness 0
+          }
+          geometry Box {
+            size 0.78 0.78 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.245
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.98 0.98 0.9
+            roughness 0.8
+            metalness 0
+          }
+          geometry Box {
+            size 0.78 0.08 0.038
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.247
+      rotation 0 0 1 1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.98 0.98 0.9
+            roughness 0.8
+            metalness 0
+          }
+          geometry Box {
+            size 0.78 0.08 0.038
+          }
+        }
+      ]
+    }
+  ]
+  name "pool umbrella(1)"
+}
+Solid {
+  translation 0 -2.45 0.006
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.02 0.48 0.95
+        transparency 0.08
+        roughness 0.2
+        metalness 0
+      }
+      geometry Box {
+        size 3.2 1.35 0.012
+      }
+    }
+  ]
+  name "swimming pool water"
+}
+Solid {
+  translation 0 -2.45 0.018
+  children [
+    Pose {
+      translation 0 0.725 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.92 0.88 0.78
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 3.45 0.1 0.025
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 -0.725 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.92 0.88 0.78
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 3.45 0.1 0.025
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 1.65 0 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.92 0.88 0.78
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.1 1.45 0.025
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -1.65 0 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.92 0.88 0.78
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.1 1.45 0.025
+          }
+        }
+      ]
+    }
+  ]
+  name "pool stone border"
+}
+Solid {
+  translation -0.628294 -1.32513 0.018
+  rotation 0 0 1 -0.18
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.07 0.44 0.88
+        roughness 0.9
+        metalness 0
+      }
+      geometry Box {
+        size 0.62 0.28 0.018
+      }
+    }
+    Pose {
+      translation 0 0.06 0.012
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.95 0.95 0.9
+            roughness 0.9
+            metalness 0
+          }
+          geometry Box {
+            size 0.62 0.035 0.01
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 -0.06 0.012
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.95 0.95 0.9
+            roughness 0.9
+            metalness 0
+          }
+          geometry Box {
+            size 0.62 0.035 0.01
+          }
+        }
+      ]
+    }
+  ]
+  name "blue striped towel"
+}
+Solid {
+  translation 0.351881 -1.31438 0.018
+  rotation 0 0 1 0.18
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.95 0.36 0.22
+        roughness 0.9
+        metalness 0
+      }
+      geometry Box {
+        size 0.62 0.28 0.018
+      }
+    }
+    Pose {
+      translation 0 0.06 0.012
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0.92 0.75
+            roughness 0.9
+            metalness 0
+          }
+          geometry Box {
+            size 0.62 0.035 0.01
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 -0.06 0.012
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0.92 0.75
+            roughness 0.9
+            metalness 0
+          }
+          geometry Box {
+            size 0.62 0.035 0.01
+          }
+        }
+      ]
+    }
+  ]
+  name "coral striped towel"
+}
+Solid {
+  translation 1.29 -0.98 0.38
+  children [
+    Pose {
+      translation 0 0 -0.18
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.12 0.12 0.12
+            roughness 0.8
+            metalness 0
+          }
+          geometry Box {
+            size 0.035 0.035 0.72
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.22
+      rotation 0 0 1 0.785398
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.06 0.55 0.95
+            roughness 0.75
+            metalness 0
+          }
+          geometry Box {
+            size 0.78 0.78 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.245
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.98 0.98 0.9
+            roughness 0.8
+            metalness 0
+          }
+          geometry Box {
+            size 0.78 0.08 0.038
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.247
+      rotation 0 0 1 1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.98 0.98 0.9
+            roughness 0.8
+            metalness 0
+          }
+          geometry Box {
+            size 0.78 0.08 0.038
+          }
+        }
+      ]
+    }
+  ]
+  name "pool umbrella"
+}
+Solid {
+  translation -1.65 -1.35 0.04
+  rotation 0 0 1 -0.25
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.95 0.91 0.78
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 0.72 0.28 0.045
+      }
+    }
+    Pose {
+      translation -0.27 0 0.11
+      rotation 0 1 0 -0.55
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.95 0.91 0.78
+            roughness 0.85
+            metalness 0
+          }
+          geometry Box {
+            size 0.32 0.28 0.045
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.22 0 0.045
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.08 0.08 0.08
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.04 0.34 0.05
+          }
+        }
+      ]
+    }
+  ]
+  name "pool lounger left"
+  boundingObject Group {
+    children [
+      Box {
+        size 0.72 0.28 0.045
+      }
+      Pose {
+        translation -0.27 0 0.11
+        rotation 0 1 0 -0.55
+        children [
+          Box {
+            size 0.32 0.28 0.045
+          }
+        ]
+      }
+    ]
+  }
+}
+Solid {
+  translation 1.65 -1.35 0.04
+  rotation 0 0 1 0.25
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.95 0.91 0.78
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 0.72 0.28 0.045
+      }
+    }
+    Pose {
+      translation -0.27 0 0.11
+      rotation 0 1 0 -0.55
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.95 0.91 0.78
+            roughness 0.85
+            metalness 0
+          }
+          geometry Box {
+            size 0.32 0.28 0.045
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.22 0 0.045
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.08 0.08 0.08
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.04 0.34 0.05
+          }
+        }
+      ]
+    }
+  ]
+  name "pool lounger right"
+  boundingObject Group {
+    children [
+      Box {
+        size 0.72 0.28 0.045
+      }
+      Pose {
+        translation -0.27 0 0.11
+        rotation 0 1 0 -0.55
+        children [
+          Box {
+            size 0.32 0.28 0.045
+          }
+        ]
+      }
+    ]
+  }
+}
+DEF PICKUP_STATION_1 Solid {
+  translation 0.9 0.55 0.09
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.86 0.8 0.66
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.18 0.18 0.18
+      }
+    }
+  ]
+  name "pickup station 1"
+  boundingObject Box {
+    size 0.18 0.18 0.18
+  }
+}
+DEF PICKUP_STATION_2 Solid {
+  translation 0.9 -0.55 0.09
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.86 0.8 0.66
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.18 0.18 0.18
+      }
+    }
+  ]
+  name "pickup station 2"
+  boundingObject Box {
+    size 0.18 0.18 0.18
+  }
+}
+DEF PICKUP_STATION_3 Solid {
+  translation 1.25 0.18 0.09
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.86 0.8 0.66
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.18 0.18 0.18
+      }
+    }
+  ]
+  name "pickup station 3"
+  boundingObject Box {
+    size 0.18 0.18 0.18
+  }
+}
+DEF PICKUP_STATION_4 Solid {
+  translation 1.25 -0.18 0.09
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.86 0.8 0.66
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.18 0.18 0.18
+      }
+    }
+  ]
+  name "pickup station 4"
+  boundingObject Box {
+    size 0.18 0.18 0.18
+  }
+}
+DEF TRASH_1 Solid {
+  translation 0.9 0.55 0.1975
+  children [
+    Pose {
+      rotation 0 0 1 0.2
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.92 0.08 0.04
+            roughness 0.55
+            metalness 0.15
+          }
+          geometry Box {
+            size 0.048 0.028 0.026
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.016
+      rotation 0 0 1 -0.35
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.95 0.95 0.92
+            roughness 0.5
+            metalness 0
+          }
+          geometry Box {
+            size 0.034 0.03 0.006
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.024 0 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.75 0.75 0.72
+            roughness 0.35
+            metalness 0.4
+          }
+          geometry Box {
+            size 0.006 0.028 0.026
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -0.024 0 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.75 0.75 0.72
+            roughness 0.35
+            metalness 0.4
+          }
+          geometry Box {
+            size 0.006 0.028 0.026
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -0.008 0.018 0.018
+      rotation 0 0 1 0.8
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.92 0.08 0.04
+            roughness 0.85
+            metalness 0
+          }
+          geometry Box {
+            size 0.024 0.012 0.008
+          }
+        }
+      ]
+    }
+  ]
+  name "red crushed can"
+  contactMaterial "trash"
+  boundingObject Box {
+    size 0.054 0.038 0.034
+  }
+  physics Physics {
+    density -1
+    mass 0.025
+  }
+}
+DEF TRASH_2 Solid {
+  translation 0.9 -0.55 0.1975
+  rotation 0 0 1 0.785398
+  children [
+    Pose {
+      rotation 0 0 1 -0.35
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0.78 0.06
+            roughness 0.75
+            metalness 0
+          }
+          geometry Box {
+            size 0.05 0.026 0.024
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.022 0 0.012
+      rotation 0 0 1 0.35
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0.9 0.18
+            roughness 0.9
+            metalness 0
+          }
+          geometry Box {
+            size 0.022 0.03 0.012
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -0.024 0 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.18 0.45 0.95
+            roughness 0.7
+            metalness 0
+          }
+          geometry Box {
+            size 0.008 0.022 0.02
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -0.005 -0.018 0.015
+      rotation 0 0 1 -0.9
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0.78 0.06
+            roughness 0.9
+            metalness 0
+          }
+          geometry Box {
+            size 0.026 0.012 0.008
+          }
+        }
+      ]
+    }
+  ]
+  name "yellow plastic wrapper"
+  contactMaterial "trash"
+  boundingObject Box {
+    size 0.054 0.038 0.034
+  }
+  physics Physics {
+    density -1
+    mass 0.025
+  }
+}
+DEF TRASH_3 Solid {
+  translation 1.25 0.18 0.1975
+  rotation 0 0 1 -0.45
+  children [
+    Pose {
+      rotation 0 0 1 0.15
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.05 0.72 0.18
+            roughness 0.6
+            metalness 0.05
+          }
+          geometry Box {
+            size 0.048 0.026 0.028
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.018
+      rotation 0 0 1 -0.25
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.9 0.95 0.82
+            roughness 0.7
+            metalness 0
+          }
+          geometry Box {
+            size 0.032 0.028 0.006
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.024 0 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.02 0.42 0.12
+            roughness 0.55
+            metalness 0.1
+          }
+          geometry Box {
+            size 0.006 0.026 0.028
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -0.006 -0.018 0.016
+      rotation 0 0 1 -0.75
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.05 0.72 0.18
+            roughness 0.85
+            metalness 0
+          }
+          geometry Box {
+            size 0.026 0.012 0.008
+          }
+        }
+      ]
+    }
+  ]
+  name "green plastic bottle"
+  contactMaterial "trash"
+  boundingObject Box {
+    size 0.054 0.038 0.034
+  }
+  physics Physics {
+    density -1
+    mass 0.025
+  }
+}
+DEF TRASH_4 Solid {
+  translation 1.25 -0.18 0.1975
+  rotation 0 0 1 0.35
+  children [
+    Pose {
+      rotation 0 0 1 -0.2
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.55 0.12 0.88
+            roughness 0.72
+            metalness 0
+          }
+          geometry Box {
+            size 0.05 0.026 0.024
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.018 0.004 0.014
+      rotation 0 0 1 0.45
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.85 0.62 1
+            roughness 0.9
+            metalness 0
+          }
+          geometry Box {
+            size 0.024 0.026 0.01
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -0.024 0 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.35 0.06 0.62
+            roughness 0.7
+            metalness 0
+          }
+          geometry Box {
+            size 0.008 0.022 0.02
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -0.006 -0.018 0.015
+      rotation 0 0 1 -0.85
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.55 0.12 0.88
+            roughness 0.9
+            metalness 0
+          }
+          geometry Box {
+            size 0.026 0.012 0.008
+          }
+        }
+      ]
+    }
+  ]
+  name "purple snack wrapper"
+  contactMaterial "trash"
+  boundingObject Box {
+    size 0.054 0.038 0.034
+  }
+  physics Physics {
+    density -1
+    mass 0.025
+  }
+}
+Youbot {
+  translation -1.55 0 0.102838
+  name "trash collector"
+  controller "trash_collector"
+  supervisor TRUE
+  bodySlot [
+    Camera {
+      translation 0.255332 0 0.223926
+      rotation 0 -1 0 -0.30359530717958627
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.1 0.1 0.1
+            transparency 1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.03 0.05 0.03
+          }
+        }
+      ]
+      name "trash camera"
+      fieldOfView 1.05
+      width 320
+      height 200
+      near 0.02
+      antiAliasing TRUE
+    }
+    DistanceSensor {
+      translation 0.23 0 0.09
+      rotation 0 1 0 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.95 0.95 0.2
+            roughness 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.01
+            radius 0.01
+          }
+        }
+      ]
+      name "ds_front"
+      lookupTable [
+        0 1024 0
+        0.1 600 0
+        0.25 0 0
+      ]
+      numberOfRays 2
+      aperture 0.5
+    }
+    DistanceSensor {
+      translation 0.199546 0.0629496 0.09
+      rotation 0 0 1 -0.55
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.95 0.95 0.2
+            roughness 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.01
+            radius 0.01
+          }
+        }
+      ]
+      name "ds_left"
+      lookupTable [
+        0 1024 0
+        0.1 600 0
+        0.25 0 0
+      ]
+      numberOfRays 2
+      aperture 0.5
+    }
+    DistanceSensor {
+      translation 0.199546 -0.0629496 0.09
+      rotation 0 0 1 0.55
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.95 0.95 0.2
+            roughness 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.01
+            radius 0.01
+          }
+        }
+      ]
+      name "ds_right"
+      lookupTable [
+        0 1024 0
+        0.1 600 0
+        0.25 0 0
+      ]
+      numberOfRays 2
+      aperture 0.5
+    }
+    GPS {
+    }
+    Compass {
+    }
+    Solid {
+      translation -0.1 0 0.08
+      children [
+        Pose {
+          translation 0 0 -0.02
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.08 0.08 0.08
+                roughness 0.85
+                metalness 0
+              }
+              geometry Box {
+                size 0.36 0.26 0.04
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0 0.14 0.12
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.94 0.48 0.08
+                roughness 0.8
+                metalness 0
+              }
+              geometry Box {
+                size 0.36 0.03 0.24
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0 -0.14 0.12
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.94 0.48 0.08
+                roughness 0.8
+                metalness 0
+              }
+              geometry Box {
+                size 0.36 0.03 0.24
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -0.18 0 0.12
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.94 0.48 0.08
+                roughness 0.8
+                metalness 0
+              }
+              geometry Box {
+                size 0.03 0.26 0.24
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.16 0 0.015
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.94 0.48 0.08
+                roughness 0.8
+                metalness 0
+              }
+              geometry Box {
+                size 0.03 0.25 0.04
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0 0.155 0.245
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.08 0.08 0.08
+                roughness 0.75
+                metalness 0
+              }
+              geometry Box {
+                size 0.36 0.015 0.015
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0 -0.155 0.245
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.08 0.08 0.08
+                roughness 0.75
+                metalness 0
+              }
+              geometry Box {
+                size 0.36 0.015 0.015
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -0.195 0 0.245
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.08 0.08 0.08
+                roughness 0.75
+                metalness 0
+              }
+              geometry Box {
+                size 0.015 0.28 0.015
+              }
+            }
+          ]
+        }
+      ]
+      name "onboard integrated bin"
+      boundingObject Group {
+        children [
+          Pose {
+            translation 0 0 -0.02
+            children [
+              Box {
+                size 0.36 0.26 0.04
+              }
+            ]
+          }
+          Pose {
+            translation 0 0.14 0.12
+            children [
+              Box {
+                size 0.36 0.03 0.24
+              }
+            ]
+          }
+          Pose {
+            translation 0 -0.14 0.12
+            children [
+              Box {
+                size 0.36 0.03 0.24
+              }
+            ]
+          }
+          Pose {
+            translation -0.18 0 0.12
+            children [
+              Box {
+                size 0.03 0.26 0.24
+              }
+            ]
+          }
+          Pose {
+            translation 0.16 0 0.055
+            children [
+              Box {
+                size 0.03 0.22 0.11
+              }
+            ]
+          }
+          Pose {
+            translation 0 0.155 0.245
+            children [
+              Box {
+                size 0.36 0.015 0.015
+              }
+            ]
+          }
+          Pose {
+            translation 0 -0.155 0.245
+            children [
+              Box {
+                size 0.36 0.015 0.015
+              }
+            ]
+          }
+          Pose {
+            translation -0.195 0 0.245
+            children [
+              Box {
+                size 0.015 0.28 0.015
+              }
+            ]
+          }
+        ]
+      }
+      physics Physics {
+        density -1
+        mass 0.2
+      }
+    }
+  ]
+}

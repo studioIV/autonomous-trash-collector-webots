@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trash Collector Manual Controls</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17211a;
+      --muted: #607066;
+      --panel: #f7f2e7;
+      --panel-strong: #efe2c3;
+      --accent: #176b4d;
+      --accent-2: #cf7b24;
+      --danger: #9f2d20;
+      --line: #d9c9a6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at top left, rgba(207, 123, 36, 0.24), transparent 35rem),
+        linear-gradient(135deg, #fff7e3 0%, #e1ead8 48%, #d2e0cb 100%);
+    }
+
+    main {
+      width: min(1180px, calc(100vw - 28px));
+      margin: 0 auto;
+      padding: 24px 0 32px;
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: clamp(2rem, 4vw, 4rem);
+      letter-spacing: -0.05em;
+    }
+
+    .subhead {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+
+    section {
+      grid-column: span 6;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(247, 242, 231, 0.86);
+      box-shadow: 0 16px 44px rgba(45, 41, 28, 0.12);
+      backdrop-filter: blur(10px);
+    }
+
+    section.wide {
+      grid-column: span 12;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(72px, 1fr));
+      gap: 9px;
+      max-width: 360px;
+    }
+
+    button {
+      min-height: 42px;
+      border: 0;
+      border-radius: 14px;
+      padding: 10px 12px;
+      color: white;
+      background: var(--accent);
+      font: 700 0.95rem/1.1 Georgia, "Times New Roman", serif;
+      cursor: pointer;
+      box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.16);
+    }
+
+    button:hover {
+      filter: brightness(1.06);
+    }
+
+    button.secondary {
+      color: var(--ink);
+      background: var(--panel-strong);
+    }
+
+    button.orange {
+      background: var(--accent-2);
+    }
+
+    button.danger {
+      background: var(--danger);
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      align-items: center;
+      margin: 8px 0;
+    }
+
+    label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    input {
+      width: 92px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 9px 10px;
+      background: #fffaf0;
+      color: var(--ink);
+      font: 700 0.95rem Georgia, "Times New Roman", serif;
+    }
+
+    pre, textarea {
+      width: 100%;
+      min-height: 210px;
+      margin: 0;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+      overflow: auto;
+      background: #18231d;
+      color: #e7ffe9;
+      font: 13px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      white-space: pre-wrap;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .hint {
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: #e8d9b8;
+      color: #4d432d;
+      font: 700 0.85rem ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    @media (max-width: 800px) {
+      section {
+        grid-column: span 12;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Manual Robot Controls</h1>
+    <p class="subhead">Use this panel to move the Webots robot by hand, tune the original gripper/arm, and send the exact grab-point report.</p>
+
+    <div class="grid">
+      <section>
+        <h2>Base</h2>
+        <p class="hint">Keyboard: <span class="pill">W/S</span> forward/back, <span class="pill">A/D</span> strafe, <span class="pill">Q/E</span> turn, <span class="pill">Space</span> stop.</p>
+        <div class="row">
+          <label>Base speed <input id="baseSpeed" type="number" value="1.1" min="0.1" max="4.5" step="0.1"></label>
+          <label>Turn <input id="turnSpeed" type="number" value="0.8" min="0.1" max="2.5" step="0.1"></label>
+        </div>
+        <div class="controls">
+          <span></span>
+          <button data-drive="1,0,0">Forward</button>
+          <span></span>
+          <button data-drive="0,1,0">Left</button>
+          <button class="danger" id="stopBtn">Stop</button>
+          <button data-drive="0,-1,0">Right</button>
+          <button data-drive="0,0,1">Turn L</button>
+          <button data-drive="-1,0,0">Back</button>
+          <button data-drive="0,0,-1">Turn R</button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Modes And Target</h2>
+        <div class="row">
+          <button id="manualBtn">Manual ON</button>
+          <button class="secondary" id="autoBtn">Auto ON</button>
+        </div>
+        <div class="row">
+          <button class="orange" data-target="red">Target red</button>
+          <button class="orange" data-target="yellow">Target yellow</button>
+          <button class="orange" data-target="green">Target green</button>
+          <button class="orange" data-target="purple">Target purple</button>
+        </div>
+        <div class="row">
+          <button class="secondary" data-pose="reset">Arm reset</button>
+          <button class="secondary" data-pose="pickup_table">Pickup pose</button>
+          <button class="secondary" data-pose="gripper_ready">Gripper ready</button>
+          <button class="secondary" data-pose="gripper_lift">Gripper lift</button>
+          <button class="secondary" data-pose="transport">Lift/transport</button>
+          <button class="secondary" data-pose="bin_transfer">Bin transfer</button>
+          <button class="secondary" data-pose="drop_onboard">Drop pose</button>
+          <button class="secondary" data-pose="place_onboard">Place in bin</button>
+        </div>
+        <div class="row">
+          <button data-gripper="open">Open gripper</button>
+          <button data-gripper="close">Close gripper</button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Arm Fine Tune</h2>
+        <p class="hint">Small steps are safer. If the arm is close, use 0.02 or 0.03 radians.</p>
+        <div class="row">
+          <label>Joint step <input id="jointStep" type="number" value="0.04" min="0.005" max="0.25" step="0.005"></label>
+        </div>
+        <div id="jointControls"></div>
+      </section>
+
+      <section>
+        <h2>Grab Report</h2>
+        <p class="hint">When the gripper is exactly where you want it, press Report. Send me the text below and I can bake that exact point into the autonomous grab.</p>
+        <div class="row">
+          <button id="reportBtn">Report grab point</button>
+          <button class="secondary" id="copyBtn">Copy report</button>
+        </div>
+        <textarea id="reportBox" spellcheck="false"></textarea>
+      </section>
+
+      <section class="wide">
+        <h2>Live Status</h2>
+        <pre id="statusBox">Waiting for controller...</pre>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const statusBox = document.querySelector("#statusBox");
+    const reportBox = document.querySelector("#reportBox");
+    const keys = new Set();
+    let holdTimer = null;
+
+    function api(path, params = {}) {
+      const query = new URLSearchParams(params);
+      return fetch(`${path}?${query.toString()}`).then((response) => response.json());
+    }
+
+    function speed() {
+      return Number(document.querySelector("#baseSpeed").value || 1);
+    }
+
+    function turnSpeed() {
+      return Number(document.querySelector("#turnSpeed").value || 0.8);
+    }
+
+    function drive(forward, strafe, turn) {
+      return api("/api/drive", {
+        forward: forward * speed(),
+        strafe: strafe * speed(),
+        turn: turn * turnSpeed(),
+        duration: 0.28
+      });
+    }
+
+    function stop() {
+      return api("/api/stop");
+    }
+
+    function currentKeyDrive() {
+      let forward = 0;
+      let strafe = 0;
+      let turn = 0;
+      if (keys.has("w")) forward += 1;
+      if (keys.has("s")) forward -= 1;
+      if (keys.has("a")) strafe += 1;
+      if (keys.has("d")) strafe -= 1;
+      if (keys.has("q")) turn += 1;
+      if (keys.has("e")) turn -= 1;
+      return { forward, strafe, turn };
+    }
+
+    setInterval(() => {
+      if (!keys.size) return;
+      const command = currentKeyDrive();
+      if (command.forward || command.strafe || command.turn) {
+        drive(command.forward, command.strafe, command.turn);
+      }
+    }, 120);
+
+    document.addEventListener("keydown", (event) => {
+      const key = event.key.toLowerCase();
+      if (["w", "a", "s", "d", "q", "e"].includes(key)) {
+        event.preventDefault();
+        keys.add(key);
+      }
+      if (event.code === "Space") {
+        event.preventDefault();
+        keys.clear();
+        stop();
+      }
+    });
+
+    document.addEventListener("keyup", (event) => {
+      const key = event.key.toLowerCase();
+      keys.delete(key);
+      if (!keys.size) stop();
+    });
+
+    document.querySelectorAll("[data-drive]").forEach((button) => {
+      const values = button.dataset.drive.split(",").map(Number);
+      const start = () => {
+        drive(values[0], values[1], values[2]);
+        holdTimer = setInterval(() => drive(values[0], values[1], values[2]), 140);
+      };
+      const end = () => {
+        clearInterval(holdTimer);
+        holdTimer = null;
+        stop();
+      };
+      button.addEventListener("pointerdown", start);
+      button.addEventListener("pointerup", end);
+      button.addEventListener("pointerleave", end);
+    });
+
+    document.querySelector("#stopBtn").addEventListener("click", stop);
+    document.querySelector("#manualBtn").addEventListener("click", () => api("/api/manual", { enabled: 1 }));
+    document.querySelector("#autoBtn").addEventListener("click", () => api("/api/manual", { enabled: 0 }));
+
+    document.querySelectorAll("[data-target]").forEach((button) => {
+      button.addEventListener("click", () => api("/api/target", { color: button.dataset.target }));
+    });
+
+    document.querySelectorAll("[data-pose]").forEach((button) => {
+      button.addEventListener("click", () => api("/api/pose", { name: button.dataset.pose }));
+    });
+
+    document.querySelectorAll("[data-gripper]").forEach((button) => {
+      button.addEventListener("click", () => api("/api/gripper", { action: button.dataset.gripper }));
+    });
+
+    const jointControls = document.querySelector("#jointControls");
+    for (let index = 0; index < 5; index += 1) {
+      const row = document.createElement("div");
+      row.className = "row";
+      row.innerHTML = `
+        <strong>arm${index + 1}</strong>
+        <button class="secondary" data-joint="${index}" data-dir="-1">-</button>
+        <button data-joint="${index}" data-dir="1">+</button>
+      `;
+      jointControls.appendChild(row);
+    }
+
+    jointControls.addEventListener("click", (event) => {
+      const button = event.target.closest("button[data-joint]");
+      if (!button) return;
+      const step = Number(document.querySelector("#jointStep").value || 0.04);
+      api("/api/joint", {
+        index: button.dataset.joint,
+        delta: Number(button.dataset.dir) * step
+      });
+    });
+
+    document.querySelector("#reportBtn").addEventListener("click", async () => {
+      const status = await api("/api/report");
+      reportBox.value = JSON.stringify(status, null, 2);
+    });
+
+    document.querySelector("#copyBtn").addEventListener("click", async () => {
+      await navigator.clipboard.writeText(reportBox.value);
+    });
+
+    async function refreshStatus() {
+      try {
+        const status = await api("/api/status");
+        statusBox.textContent = JSON.stringify(status, null, 2);
+      } catch (error) {
+        statusBox.textContent = `Controller not reachable yet: ${error}`;
+      }
+    }
+
+    refreshStatus();
+    setInterval(refreshStatus, 500);
+  </script>
+</body>
+</html>
